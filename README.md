@@ -8,7 +8,7 @@
 
 This is a simple, clean landing page and portfolio built with HTML, CSS and vanilla JavaScript. It’s based on a Photoshop mockup called **Hilltop - PSD Template for Creative Professionals** — purchased from [Envato/ThemeForest](https://themeforest.net/item/hilltop-psd-template-for-creative-professionals/19520245).
 
-The goal of this project is to turn a static design into accessible, modern code — and make it easy for anyone to customize or learn from. It’s mobile responsive and includes a hero slider that's accessible and responsive.
+The goal of this project is to turn a static design into accessible, modern code — and make it easy for anyone to customize or learn from. It’s mobile responsive and includes a hero slider that's accessible.
 
 _This project is part of a free, open-source series focused on helping newer developers practice HTML/CSS with real-world examples._
 
