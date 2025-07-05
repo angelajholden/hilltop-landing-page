@@ -32,7 +32,7 @@ _This project is part of a free, open-source series focused on helping newer dev
 ### ✅ Git Clone
 
 ```bash
-git clone git@github.com:angelajholden/[your-repo-name].git
+git clone git@github.com:angelajholden/hilltop-landing-page.git
 ```
 
 ### ✅ Live Server
