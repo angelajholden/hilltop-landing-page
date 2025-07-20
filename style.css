@@ -68,7 +68,8 @@ p:last-of-type {
 	margin: 0;
 }
 
-a:not(.content_link):not(.button) {
+a:not(.content_link):not(.button):not(.social_item a):link,
+a:not(.content_link):not(.button):not(.social_item a):visited {
 	display: inline-block;
 	text-decoration: none;
 	color: var(--maron);
@@ -76,9 +77,9 @@ a:not(.content_link):not(.button) {
 	transition: border-bottom 300ms ease-in-out;
 }
 
-a:not(.content_link):not(.button):hover,
-a:not(.content_link):not(.button):active,
-a:not(.content_link):not(.button):focus {
+a:not(.content_link):not(.button):not(.social_item a):focus,
+a:not(.content_link):not(.button):not(.social_item a):hover,
+a:not(.content_link):not(.button):not(.social_item a):active {
 	border-bottom: 2px solid var(--maron);
 }
 
@@ -131,6 +132,7 @@ input[type="number"] {
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
 	cursor: pointer;
+	white-space: nowrap;
 	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
 }
 
@@ -139,6 +141,12 @@ input[type="number"] {
 .button:focus {
 	background-color: var(--black);
 	color: var(--white);
+}
+
+@media (max-width: 1024px) {
+	.button {
+		padding: 0.75rem 1rem;
+	}
 }
 
 .content_header {
@@ -170,12 +178,29 @@ input[type="number"] {
 	z-index: 1;
 }
 
+@media (max-width: 1024px) {
+	.header {
+		padding: 0 0.5rem;
+	}
+}
+
 .primary-logo {
+	width: 14rem;
+	max-width: 100%;
 	margin: 0;
+	padding: 0;
 	font-size: clamp(1.333rem, 3vw, 2rem);
 	font-weight: 600;
 	letter-spacing: 5px;
 	text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+	.primary-logo {
+		width: calc(100% - 6rem);
+		/* this is to match the spacing of the icons on the right */
+		padding-left: 11.5px;
+	}
 }
 
 .header_right {
@@ -184,9 +209,21 @@ input[type="number"] {
 	justify-content: space-evenly;
 	align-items: center;
 	gap: 0.5rem;
+	width: 14rem;
+	max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+	.header_right {
+		width: auto;
+	}
 }
 
 /* Social Nav */
+.social_nav {
+	position: static;
+}
+
 .social_nav ul {
 	display: flex;
 	flex-flow: row nowrap;
@@ -198,26 +235,50 @@ input[type="number"] {
 	list-style-type: none;
 }
 
-.social_item a {
-	display: block;
-	padding: 11.5px;
+.social_item {
+	line-height: 1;
 }
 
-.social_item svg {
+.social_item a:link,
+.social_item a:visited {
 	display: block;
-	width: 25px;
-	height: 25px;
-	fill: var(--black);
+	padding: 11.5px;
+	border-bottom: none;
+}
+
+@media (max-width: 1024px) {
+	.social_nav {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: var(--lt-gray);
+		z-index: 3;
+	}
+
+	.social_nav ul {
+		justify-content: center;
+	}
 }
 
 /* Navigation */
-.mobile_nav {
+.mobile_button {
 	display: none;
+	padding: 11.5px;
+	border: none;
+	background-color: transparent;
+}
+
+.mobile_button div {
+	width: 25px;
+	height: 0;
+	margin: 0.333rem 0;
+	border-bottom: 2px solid var(--black);
 }
 
 .main_nav {
-	width: 50rem;
-	max-width: 100%;
+	position: static;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
 .main_nav ul {
@@ -225,7 +286,7 @@ input[type="number"] {
 	flex-flow: row nowrap;
 	justify-content: space-evenly;
 	align-items: center;
-	gap: 0.5rem;
+	gap: clamp(1rem, 3vw, 3rem);
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
@@ -236,6 +297,45 @@ input[type="number"] {
 	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
+}
+
+@media (max-width: 1024px) {
+	.mobile_button {
+		display: block;
+	}
+
+	.mobile_close div:nth-of-type(1) {
+		transform: rotateZ(45deg) translate(2px, 2px);
+	}
+
+	.mobile_close div:nth-of-type(2) {
+		transform: rotateZ(-45deg) translate(4px, -3px);
+	}
+
+	.main_nav {
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		right: -300px;
+		width: 300px;
+		max-width: 100%;
+		height: 100vh;
+		background-color: var(--white);
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+		transition: right 300ms ease-in-out, box-shadow 300ms ease-in-out;
+		z-index: 4;
+	}
+
+	.main_nav.active {
+		visibility: visible;
+		right: 0;
+		box-shadow: -1px 0px 1px 1px rgba(0, 0, 0, 0.1);
+	}
+
+	.main_nav ul {
+		flex-direction: column;
+		margin: 6rem 0 0;
+	}
 }
 
 /* Search */
@@ -448,6 +548,27 @@ input[type="number"] {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+	.slider .image {
+		margin: 3rem 0 0;
+		aspect-ratio: 16 / 9;
+	}
+
+	.slider_content {
+		position: static;
+		width: 100%;
+		padding: 2rem 2rem 3rem;
+		transform: translate(0, 0);
+	}
+
+	.slider_content::after {
+		top: 1rem;
+		left: 1rem;
+		width: calc(100% - 2rem);
+		height: calc(100% - 2rem);
+	}
 }
 
 /* Three Card Section */
