@@ -246,6 +246,13 @@ input[type="number"] {
 	border-bottom: none;
 }
 
+.social_item svg {
+	display: block;
+	width: 25px;
+	height: 25px;
+	fill: var(--black);
+}
+
 @media (max-width: 1024px) {
 	.social_nav {
 		position: absolute;

@@ -5,3 +5,4 @@
 -   fix border-bottom on social nav icons DONE
 -   need to esc to close menu
 -   need to esc to close search drawer
+-   need hover, active for social icons (brandcolors.net)
