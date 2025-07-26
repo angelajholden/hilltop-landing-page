@@ -135,9 +135,9 @@ input[type="number"] {
 	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
 }
 
+.button:focus,
 .button:hover,
-.button:active,
-.button:focus {
+.button:active {
 	background-color: var(--black);
 	color: var(--white);
 }
@@ -506,9 +506,9 @@ input[type="number"] {
 	transition: background-color 300ms ease-in-out;
 }
 
+.slider_button:focus,
 .slider_button:hover,
-.slider_button:active,
-.slider_button:focus {
+.slider_button:active {
 	background-color: var(--black);
 }
 
@@ -520,9 +520,9 @@ input[type="number"] {
 	transition: stroke 300ms ease-in-out;
 }
 
+.slider_button:focus > svg,
 .slider_button:hover > svg,
-.slider_button:active > svg,
-.slider_button:focus > svg {
+.slider_button:active > svg {
 	stroke: var(--white);
 }
 
@@ -648,9 +648,9 @@ input[type="number"] {
 	transition: transform 300ms ease-in-out;
 }
 
+.three_card-section .content_link:focus > svg,
 .three_card-section .content_link:hover > svg,
-.three_card-section .content_link:active > svg,
-.three_card-section .content_link:focus > svg {
+.three_card-section .content_link:active > svg {
 	transform: translateX(0.5rem);
 }
 
@@ -889,9 +889,9 @@ input[type="number"] {
 	background-color: transparent;
 }
 
+.testimonial_slider-section .slider_button:focus,
 .testimonial_slider-section .slider_button:hover,
-.testimonial_slider-section .slider_button:active,
-.testimonial_slider-section .slider_button:focus {
+.testimonial_slider-section .slider_button:active {
 	background-color: var(--white);
 }
 
@@ -899,9 +899,9 @@ input[type="number"] {
 	stroke: var(--white);
 }
 
+.testimonial_slider-section .slider_button:focus > svg,
 .testimonial_slider-section .slider_button:hover > svg,
-.testimonial_slider-section .slider_button:active > svg,
-.testimonial_slider-section .slider_button:focus > svg {
+.testimonial_slider-section .slider_button:active > svg {
 	stroke: var(--black);
 }
 
@@ -959,9 +959,9 @@ input[type="number"] {
 	color: var(--white);
 }
 
+.form .button:focus,
 .form .button:hover,
-.form .button:active,
-.form .button:focus {
+.form .button:active {
 	background-color: transparent;
 	color: var(--black);
 }
