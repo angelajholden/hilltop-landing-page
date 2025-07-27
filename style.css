@@ -8,6 +8,9 @@
 	--yellow: #f2dfa7;
 	--gold: #a68256;
 	--maron: #590202;
+	--github: #6cc644;
+	--instagram: #833ab4;
+	--pinterest: #e60023;
 }
 
 /*
@@ -249,6 +252,25 @@ input[type="number"] {
 	width: 25px;
 	height: 25px;
 	fill: var(--black);
+	transition: fill 300ms ease-in-out;
+}
+
+.social_item.github a:focus > svg,
+.social_item.github a:hover > svg,
+.social_item.github a:active > svg {
+	fill: var(--github);
+}
+
+.social_item.instagram a:focus > svg,
+.social_item.instagram a:hover > svg,
+.social_item.instagram a:active > svg {
+	fill: var(--instagram);
+}
+
+.social_item.pinterest a:focus > svg,
+.social_item.pinterest a:hover > svg,
+.social_item.pinterest a:active > svg {
+	fill: var(--pinterest);
 }
 
 @media (max-width: 1024px) {
@@ -258,7 +280,7 @@ input[type="number"] {
 		left: 0;
 		width: 100%;
 		background-color: var(--lt-gray);
-		z-index: 3;
+		z-index: 2;
 	}
 
 	.social_nav ul {
@@ -267,7 +289,9 @@ input[type="number"] {
 }
 
 /* Navigation */
-.mobile_button {
+/* buttons are not displayed on desktop */
+.mobile_open,
+.mobile_close {
 	display: none;
 	padding: 11.5px;
 	border: none;
@@ -304,8 +328,24 @@ input[type="number"] {
 	letter-spacing: 1.5px;
 }
 
+.nav_item a:not(.content_link):not(.button):not(.social_item a).active {
+	border-bottom: 2px solid var(--maron);
+}
+
 @media (max-width: 1024px) {
-	.mobile_button {
+	/* open button is displayed on mobile */
+	.mobile_open {
+		display: block;
+	}
+
+	/* when open button is active (menu is active) button is not displayed */
+	.mobile_open.active {
+		visibility: hidden;
+		pointer-events: none;
+	}
+
+	/* when menu is active, close button is displayed */
+	.mobile_close.active {
 		display: block;
 	}
 
@@ -317,6 +357,7 @@ input[type="number"] {
 		transform: rotateZ(-45deg) translate(4px, -3px);
 	}
 
+	/* triggers main nav, but animation only work when opening */
 	.main_nav {
 		visibility: hidden;
 		position: fixed;
@@ -334,7 +375,7 @@ input[type="number"] {
 	.main_nav.active {
 		visibility: visible;
 		right: 0;
-		box-shadow: -1px 0px 1px 1px rgba(0, 0, 0, 0.1);
+		box-shadow: -1px 0 1px 1px rgba(0, 0, 0, 0.1);
 	}
 
 	.main_nav ul {
@@ -374,6 +415,10 @@ input[type="number"] {
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+}
+
+.search_open.active {
+	visibility: hidden;
 }
 
 .search_close svg,
@@ -438,6 +483,11 @@ input[type="number"] {
 
 /* Slider */
 .slider {
+	position: relative;
+	z-index: 0;
+}
+
+.slider_wrap {
 	position: relative;
 	z-index: 0;
 }
@@ -535,11 +585,30 @@ input[type="number"] {
 }
 
 .slider ul {
+	position: relative;
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 	width: 100%;
 	height: auto;
+	aspect-ratio: 8 / 3;
+	z-index: 0;
+}
+
+.slider .slider_item {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	inset: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 300ms ease-in-out;
+}
+
+.slider .slider_item.active {
+	pointer-events: auto;
+	opacity: 1;
+	z-index: 1;
 }
 
 .slider .image {
@@ -556,8 +625,12 @@ input[type="number"] {
 }
 
 @media (max-width: 1024px) {
-	.slider .image {
+	.slider ul {
 		margin: 3rem 0 0;
+		aspect-ratio: 16 / 9;
+	}
+
+	.slider .image {
 		aspect-ratio: 16 / 9;
 	}
 
@@ -864,7 +937,7 @@ input[type="number"] {
 
 /* Testimonial Slider Section */
 .testimonial_slider-section {
-	padding: 4rem 1rem;
+	padding: 4rem 1rem 0;
 	background-color: var(--black);
 	color: var(--white);
 }
@@ -883,6 +956,7 @@ input[type="number"] {
 	margin: 0 auto;
 	padding: 0;
 	list-style-type: none;
+	aspect-ratio: 4 / 1;
 }
 
 .testimonial_slider-section .slider_button {
