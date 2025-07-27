@@ -6,3 +6,4 @@
 -   need to esc to close menu DONE
 -   need to esc to close search drawer DONE
 -   need hover, active for social icons (brandcolors.net) DONE
+-   create issue in github for ifrome aspect ratio for safari desktop
