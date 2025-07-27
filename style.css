@@ -937,7 +937,7 @@ input[type="number"] {
 
 /* Testimonial Slider Section */
 .testimonial_slider-section {
-	padding: 4rem 1rem 0;
+	padding: 4rem 1rem;
 	background-color: var(--black);
 	color: var(--white);
 }
@@ -957,6 +957,15 @@ input[type="number"] {
 	padding: 0;
 	list-style-type: none;
 	aspect-ratio: 4 / 1;
+}
+
+.testimonial_slider-section .slider_item {
+	height: 0;
+}
+
+.testimonial_slider-section .slider_item.active {
+	position: relative;
+	height: auto;
 }
 
 .testimonial_slider-section .slider_button {
@@ -986,7 +995,6 @@ input[type="number"] {
 
 	.testimonial_slider-section .slider_controls {
 		inset: unset;
-		padding: 0;
 		left: 0;
 		bottom: 0.5rem;
 	}
